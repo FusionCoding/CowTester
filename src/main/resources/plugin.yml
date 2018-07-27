@@ -1,0 +1,10 @@
+name: CowTester
+version: 1.0
+main: de.fusion.cowtester.CowTester
+author: FusionCoding
+description: A simple lag test plugin.
+website: https://deluxenode.com/
+database: false
+commands:
+  cowttester:
+    aliases: [ct, cowtest]

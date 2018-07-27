@@ -1,0 +1,53 @@
+#
+#   _____           _______        _
+#  / ____|         |__   __|      | |
+# | |     _____      _| | ___  ___| |_ ___ _ __
+# | |    / _ \ \ /\ / / |/ _ \/ __| __/ _ \ '__|
+# | |___| (_) \ V  V /| |  __/\__ \ ||  __/ |
+#  \_____\___/ \_/\_/ |_|\___||___/\__\___|_|
+#
+#
+# Author: FusionCoding
+# Version: 1.0
+# State: ALPHA
+#
+General:
+ Prefix: "&7Cow&eTester \xbb &7"
+
+ # Thread are split over one second, 20 threads would result in a update every 50ms.
+ # The higher this value is the more smoother and faster the update of values is.
+ # Increasing this value does not change accuracy.
+ CountThreads: 20
+
+ # This message will be displayed in the actionbar.
+ ActionBar: "%prefix%&a%amount% cows per second &8[&e%total%]"
+
+KickMessages:
+  NotAllowing:
+    - "&bDeluxe&7Counter &8\xbb &b"
+    - "&7You've got kicked from our System"
+    - "  "
+    - "&7We're currently not allowing connections"
+    - "&7Please check back in a few minutes"
+    - "   "
+    - "&7Thank you for your patience"
+
+Commands:
+  Help:
+    - "&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-"
+    - "&bDeluxe&7Counter &8» &7/dc about -> Show informations about the plugin"
+    - "&bDeluxe&7Counter &8 »&7/dc toggle -> Toggle notifications"
+    - "&bDeluxe&7Counter &8» &7/dc allow -> Allow connections"
+    - "&bDeluxe&7Counter &8» &7/dc disallow -> Disallow connections"
+    - "&bDeluxe&7Counter &8» &7/dc reload -> Forces a reload of the config"
+    - "&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-"
+  NoPermissions: "I'm sorry but you don't have enough permissions to run this command."
+  Reloaded: "The configuration file reloaded successfully."
+  NoPlayer: "This command can only be ran by a player."
+  AllowConnections: "Now accepting new connections."
+  DisallowConnections: "Not longer allowing new connections."
+  Toggle:
+    Other:
+      Enabled: "You now receive notifications."
+      Disabled: "You not longer receive notifications."
+
