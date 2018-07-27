@@ -12,7 +12,7 @@
 # State: ALPHA
 #
 General:
- Prefix: "&7Cow&eTester \xbb &7"
+ Prefix: "&7Cow&eTester &8» &7"
 
  # Thread are split over one second, 20 threads would result in a update every 50ms.
  # The higher this value is the more smoother and faster the update of values is.
@@ -20,7 +20,7 @@ General:
  CountThreads: 20
 
  # This message will be displayed in the actionbar.
- ActionBar: "%prefix%&a%amount% cows per second &8[&e%total%] &7 - &a%TPS% &7TPS"
+ ActionBar: "%prefix%&a%amount% cows per second &8[&e%total%&8] &7 - &a%tps% &7TPS"
 
  Chat: "%prefix%Spawned &b%total% &7cows."
 
@@ -41,11 +41,13 @@ Commands:
     - "&7Cow&eTester &8» &7/ct toggle -> Toggle notifications"
     - "&7Cow&eTester &8» &7/ct start -> Starts the benchmark."
     - "&7Cow&eTester &8» &7/ct reload -> Forces a reload of the config"
+    - "&7Cow&eTester &8» &7/ct setlocation -> Set the location where to spawn"
     - "&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-"
   NoPermissions: "I'm sorry but you don't have enough permissions to run this command."
   Reloaded: "The configuration file reloaded successfully."
   NoPlayer: "This command can only be ran by a player."
   StartBenchmark: "Starting the benchmark."
+  SetLocation: "Location is set."
   Toggle:
     Other:
       Enabled: "You now receive notifications."

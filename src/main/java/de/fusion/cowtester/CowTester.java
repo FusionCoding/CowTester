@@ -1,13 +1,17 @@
 package de.fusion.cowtester;
 
+import de.fusion.cowtester.commands.CowTesterCommand;
 import de.fusion.cowtester.common.CountManager;
 import de.fusion.cowtester.config.ConfigManager;
+import de.fusion.cowtester.listener.AsyncPlayerPreLoginListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.entity.EntityType;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,6 +25,7 @@ public class CowTester extends JavaPlugin {
   private boolean running;
   private List<String> toggledPlayers = new ArrayList<>();
   private boolean allowConnections = true;
+  public Location cowLocation;
 
 
   /**
@@ -53,7 +58,8 @@ public class CowTester extends JavaPlugin {
     countManager.init();
 
     PluginManager pm = Bukkit.getPluginManager();
-
+    pm.registerEvents(new AsyncPlayerPreLoginListener(), this);
+    getCommand("cowtester").setExecutor(new CowTesterCommand());
 
   }
 
@@ -153,5 +159,41 @@ public class CowTester extends JavaPlugin {
    */
   public void setAllowConnections(boolean allowConnections) {
     this.allowConnections = allowConnections;
+  }
+
+  public void setCowLocation(Location cowLocation) {
+    this.cowLocation = cowLocation;
+  }
+
+  public void startBenchmark() {
+    Bukkit.getOnlinePlayers().forEach((player) -> {
+      if (!player.isOp() || !player.hasPermission("cowtester.stay")) {
+        player.kickPlayer(getConfiguration().getPath("KickMessages.NotAllowing").getStringList());
+      }
+    });
+    setAllowConnections(false);
+
+    new Thread(() -> {
+      while (running) {
+        for (int i = 0; i < 1000; i++) {
+          Bukkit.getScheduler().runTask(this, () -> cowLocation.getWorld().spawnEntity(cowLocation, EntityType.COW));
+          getCountManager().addCow();
+        }
+        String message = getConfiguration().getPath("General.Chat").getString()
+            .replace("%prefix%", CowTester.getPrefix())
+            .replace("%total%", getCountManager().getTotalCows() + "");
+        Bukkit.getOnlinePlayers().forEach((player) -> {
+          if (toggledPlayers.contains(player.getName())) {
+            player.sendMessage(message);
+          }
+        });
+        log(message);
+        try {
+          Thread.sleep(250);
+        } catch (InterruptedException ignored) {
+        }
+      }
+    }, "Cow Spawner").start();
+
   }
 }

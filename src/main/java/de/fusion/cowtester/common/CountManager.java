@@ -40,12 +40,14 @@ public class CountManager {
 
       while (CowTester.getInstance().isRunning()) {
         Bukkit.getOnlinePlayers().forEach(player -> {
-          if (player.hasPermission("cowtester.view")) {
+          if (CowTester.getInstance().getToggledPlayers().contains(player.getName())) {
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                 TextComponent.fromLegacyText(
                     CowTester.getConfiguration().getPath("General.ActionBar").getString()
                         .replace("%prefix%", CowTester.getPrefix())
-                        .replace("%amount%", getBotsPerSecond() + "")));
+                        .replace("%amount%", getBotsPerSecond() + "")
+                        .replace("%total%", getTotalCows() + "")
+                        .replace("%tps%", round(new DeluxeTPS().getTPS(),2) + "")));
           }
         });
         try {
@@ -75,5 +77,14 @@ public class CountManager {
     }
 
     return total / threads;
+  }
+
+  public static double round(double value, int places) {
+    if (places < 0) throw new IllegalArgumentException();
+
+    long factor = (long) Math.pow(10, places);
+    value = value * factor;
+    long tmp = Math.round(value);
+    return (double) tmp / factor;
   }
 }

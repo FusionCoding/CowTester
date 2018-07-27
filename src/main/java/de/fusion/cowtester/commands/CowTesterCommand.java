@@ -55,6 +55,17 @@ public class CowTesterCommand implements CommandExecutor, TabCompleter {
         if (commandSender.hasPermission("CowTester.perform.start")) {
           commandSender.sendMessage(CowTester.getPrefix() + CowTester.getConfiguration()
               .getPath("Commands.StartBenchmark").getString());
+          CowTester.getInstance().startBenchmark();
+
+        } else {
+          commandSender.sendMessage(CowTester.getPrefix() + CowTester.getConfiguration()
+              .getPath("Commands.NoPermissions").getString());
+        }
+      } else if (args[0].equalsIgnoreCase("setlocation")) {
+        if (commandSender.hasPermission("CowTester.perform.setlocation")) {
+          commandSender.sendMessage(CowTester.getPrefix() + CowTester.getConfiguration()
+              .getPath("Commands.SetLocation").getString());
+            CowTester.getInstance().setCowLocation(((Player)commandSender).getLocation());
 
         } else {
           commandSender.sendMessage(CowTester.getPrefix() + CowTester.getConfiguration()
