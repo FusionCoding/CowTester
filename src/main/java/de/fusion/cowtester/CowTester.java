@@ -129,4 +129,29 @@ public class CowTester extends JavaPlugin {
   public static CountManager getCountManager() {
     return countManager;
   }
+
+  /**
+   * Method can be used to access the toggled players
+   *
+   * @return List
+   */
+  public List<String> getToggledPlayers() {
+    return toggledPlayers;
+  }
+
+  /**
+   * Used to determine if connections should be allowed Useful for testing
+   *
+   * @return boolean
+   */
+  public boolean isAllowingConnections() {
+    return allowConnections;
+  }
+
+  /**
+   * Used to set the status of allowing connections
+   */
+  public void setAllowConnections(boolean allowConnections) {
+    this.allowConnections = allowConnections;
+  }
 }

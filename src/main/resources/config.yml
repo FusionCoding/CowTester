@@ -20,14 +20,16 @@ General:
  CountThreads: 20
 
  # This message will be displayed in the actionbar.
- ActionBar: "%prefix%&a%amount% cows per second &8[&e%total%]"
+ ActionBar: "%prefix%&a%amount% cows per second &8[&e%total%] &7 - &a%TPS% &7TPS"
+
+ Chat: "%prefix%Spawned &b%total% &7cows."
 
 KickMessages:
   NotAllowing:
     - "&bDeluxe&7Counter &8\xbb &b"
     - "&7You've got kicked from our System"
     - "  "
-    - "&7We're currently not allowing connections"
+    - "&7We're currently running testings"
     - "&7Please check back in a few minutes"
     - "   "
     - "&7Thank you for your patience"
@@ -35,17 +37,15 @@ KickMessages:
 Commands:
   Help:
     - "&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-"
-    - "&bDeluxe&7Counter &8» &7/dc about -> Show informations about the plugin"
-    - "&bDeluxe&7Counter &8 »&7/dc toggle -> Toggle notifications"
-    - "&bDeluxe&7Counter &8» &7/dc allow -> Allow connections"
-    - "&bDeluxe&7Counter &8» &7/dc disallow -> Disallow connections"
-    - "&bDeluxe&7Counter &8» &7/dc reload -> Forces a reload of the config"
+    - "&7Cow&eTester &8» &7/ct about -> Show informations about the plugin"
+    - "&7Cow&eTester &8» &7/ct toggle -> Toggle notifications"
+    - "&7Cow&eTester &8» &7/ct start -> Starts the benchmark."
+    - "&7Cow&eTester &8» &7/ct reload -> Forces a reload of the config"
     - "&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-"
   NoPermissions: "I'm sorry but you don't have enough permissions to run this command."
   Reloaded: "The configuration file reloaded successfully."
   NoPlayer: "This command can only be ran by a player."
-  AllowConnections: "Now accepting new connections."
-  DisallowConnections: "Not longer allowing new connections."
+  StartBenchmark: "Starting the benchmark."
   Toggle:
     Other:
       Enabled: "You now receive notifications."
